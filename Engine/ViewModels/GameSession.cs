@@ -7,15 +7,19 @@ using System.Threading.Tasks;
 
 namespace Engine.ViewModels
 {
-    internal class GameSession
+    public class GameSession
     {
-        Player currentPlayer { get; set; }
+        public Player currentPlayer { get; set; }
 
         public GameSession()
         {
             currentPlayer = new Player();
             currentPlayer.name = "Ryan";
-            currentPlayer.gold = 100000;
+            currentPlayer.characterClass = "Fighter";
+            currentPlayer.hitPoints = 10;
+            currentPlayer.experiencePoints = 0;
+            currentPlayer.level = 1;
+            currentPlayer.gold = 1000000;
         }
     }
 }
