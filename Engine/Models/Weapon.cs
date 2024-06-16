@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Engine.Models
 {
     public class Weapon(int itemTypeID, string name, int price, int minDamage, int maxDamage) 
-        : GameItem(itemTypeID, name, price)
+        : GameItem(itemTypeID, name, price, true)
     {
         public int MinimumDamage { get; set; } = minDamage;
         public int MaximumDamage { get; set; } = maxDamage;

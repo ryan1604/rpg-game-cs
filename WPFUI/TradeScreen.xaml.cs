@@ -29,25 +29,26 @@ namespace WPFUI
 
         private void OnClick_Sell(object sender, RoutedEventArgs e)
         {
-            GameItem item = ((FrameworkElement) sender).DataContext as GameItem;
-            if (item != null)
+            GroupedInventoryItem groupedInventoryItem = 
+                ((FrameworkElement)sender).DataContext as GroupedInventoryItem;
+            if (groupedInventoryItem != null)
             {
-                Session.CurrentPlayer.Gold += item.Price;
-                Session.CurrentPlayer.RemoveItemFromInventory(item);
-                Session.CurrentTrader.AddItemToInventory(item);
+                Session.CurrentPlayer.Gold += groupedInventoryItem.Item.Price;
+                Session.CurrentPlayer.RemoveItemFromInventory(groupedInventoryItem.Item);
+                Session.CurrentTrader.AddItemToInventory(groupedInventoryItem.Item);
             }
         }
 
         private void OnClick_Buy(object sender, RoutedEventArgs e)
         {
-            GameItem item = ((FrameworkElement)sender).DataContext as GameItem;
-            if (item != null)
+            GroupedInventoryItem groupedInventoryItem = ((FrameworkElement)sender).DataContext as GroupedInventoryItem;
+            if (groupedInventoryItem != null)
             {
-                if (Session.CurrentPlayer.Gold > item.Price)
+                if (Session.CurrentPlayer.Gold > groupedInventoryItem.Item.Price)
                 {
-                    Session.CurrentPlayer.Gold -= item.Price;
-                    Session.CurrentPlayer.AddItemToInventory(item);
-                    Session.CurrentTrader.RemoveItemFromInventory(item);
+                    Session.CurrentPlayer.Gold -= groupedInventoryItem.Item.Price;
+                    Session.CurrentPlayer.AddItemToInventory(groupedInventoryItem.Item);
+                    Session.CurrentTrader.RemoveItemFromInventory(groupedInventoryItem.Item);
                 }
                 else
                 {
