@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public class Location
+    public class Location(int xCoordinate, int yCoordinate, string name, string description, string imageName)
     {
-        public int XCoordinate { get; set; }
-        public int YCoordinate { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImageName { get; set; }
-        public List<Quest> QuestsAvailableHere { get; set; } = new List<Quest>();
-        public List<MonsterEncounter> MonstersHere { get; set; } = new List<MonsterEncounter>();
+        public int XCoordinate { get; } = xCoordinate;
+        public int YCoordinate { get; } = yCoordinate;
+        public string Name { get; } = name;
+        public string Description { get; } = description;
+        public string ImageName { get; } = imageName;
+        public List<Quest> QuestsAvailableHere { get; } = new List<Quest>();
+        public List<MonsterEncounter> MonstersHere { get; } = new List<MonsterEncounter>();
         public Trader TraderHere { get; set; }
 
         public void AddMonster(int monsterID, int chanceOfEncountering)
