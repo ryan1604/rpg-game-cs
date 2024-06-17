@@ -31,7 +31,7 @@ namespace Engine.Factories
                 "Trader.png");
             newWorld.LocationAt(-1, 0).TraderHere = TraderFactory.GetTraderByName("Susan");
 
-            newWorld.AddLocation(0, 0, "Town Sqaure", "You see a fountain here.",
+            newWorld.AddLocation(0, 0, "Town Square", "You see a fountain here.",
                 "TownSquare.png");
 
             newWorld.AddLocation(1, 0, "Town Gate",
