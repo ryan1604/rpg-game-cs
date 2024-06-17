@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Actions;
 
 namespace Engine.Models
 {
     public class GameItem(GameItem.ItemCategory category, int itemTypeID, string name, int price, 
-        bool isUnique = false, int minDamage = 0, int maxDamage = 0)
+        bool isUnique = false, AttackWithWeapon action = null)
     {
         public enum ItemCategory
         {
@@ -20,12 +21,16 @@ namespace Engine.Models
         public string Name { get; } = name;
         public int Price { get; } = price;
         public bool IsUnique { get; } = isUnique;
-        public int MinimumDamage { get; } = minDamage;
-        public int MaximumDamage { get; } = maxDamage;
+        public AttackWithWeapon Action { get; set; } = action;
 
         public GameItem Clone()
         {
-            return new GameItem(Category, ItemTypeID, Name, Price, IsUnique, MinimumDamage, MaximumDamage);
+            return new GameItem(Category, ItemTypeID, Name, Price, IsUnique, Action);
+        }
+
+        public void PerformAction(LivingEntity actor, LivingEntity target)
+        {
+            Action?.Execute(actor, target);
         }
     }
 }

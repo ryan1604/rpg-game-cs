@@ -1,4 +1,5 @@
-﻿using Engine.Models;
+﻿using Engine.Actions;
+using Engine.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace Engine.Factories
 
         public static GameItem CreateGameItem(int itemTypeID)
         {
-             return _standardGameItems.FirstOrDefault(item => item.ItemTypeID == itemTypeID)?.Clone();
+            return _standardGameItems.FirstOrDefault(item => item.ItemTypeID == itemTypeID)?.Clone();
         }
 
         private static void BuildMiscellaneousItem(int id, string name, int price)
@@ -37,8 +38,9 @@ namespace Engine.Factories
         private static void BuildWeapon(int id, string name, int price,
                                         int minimumDamage, int maximumDamage)
         {
-            _standardGameItems.Add(new GameItem(GameItem.ItemCategory.Weapon, id, name, price,
-                                                true, minimumDamage, maximumDamage));
+            GameItem weapon = new GameItem(GameItem.ItemCategory.Weapon, id, name, price, true);
+            weapon.Action = new AttackWithWeapon(weapon, maximumDamage, minimumDamage);
+            _standardGameItems.Add(weapon);
         }
     }
 }
