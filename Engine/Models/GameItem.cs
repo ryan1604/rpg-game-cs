@@ -8,7 +8,7 @@ using Engine.Actions;
 namespace Engine.Models
 {
     public class GameItem(GameItem.ItemCategory category, int itemTypeID, string name, int price, 
-        bool isUnique = false, AttackWithWeapon action = null)
+        bool isUnique = false, IAction action = null)
     {
         public enum ItemCategory
         {
@@ -21,7 +21,7 @@ namespace Engine.Models
         public string Name { get; } = name;
         public int Price { get; } = price;
         public bool IsUnique { get; } = isUnique;
-        public AttackWithWeapon Action { get; set; } = action;
+        public IAction Action { get; set; } = action;
 
         public GameItem Clone()
         {
