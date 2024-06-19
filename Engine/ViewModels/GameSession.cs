@@ -69,6 +69,7 @@ namespace Engine.ViewModels
             {
                 if (_currentMonster != null)
                 {
+                    _currentMonster.OnActionPerformed -= OnCurrentMonsterPerformedAction;
                     _currentMonster.OnKilled -= OnCurrentMonsterKilled;
                 }
 
@@ -76,6 +77,7 @@ namespace Engine.ViewModels
 
                 if (CurrentMonster != null)
                 {
+                    _currentMonster.OnActionPerformed += OnCurrentMonsterPerformedAction;
                     _currentMonster.OnKilled += OnCurrentMonsterKilled;
                     RaiseMessage($"You see a {CurrentMonster.Name} here!");
                     RaiseMessage("");
@@ -250,17 +252,13 @@ namespace Engine.ViewModels
             }
             else
             {
-                int damageToPlayer = RandomNumberGenerator.NumberBetween(CurrentMonster.MinimumDamage, CurrentMonster.MaximumDamage);
-                if (damageToPlayer == 0)
-                {
-                    RaiseMessage($"The {CurrentMonster.Name} attacks, but misses you.");
-                }
-                else
-                {
-                    RaiseMessage($"The {CurrentMonster.Name} hit you for {damageToPlayer} points.");
-                    CurrentPlayer.TakeDamage(damageToPlayer);
-                }
+                CurrentMonster.UseCurrentWeaponOn(CurrentPlayer);
             }
+        }
+
+        private void OnCurrentMonsterPerformedAction(object sender, string result)
+        {
+            RaiseMessage(result);
         }
 
         private void OnCurrentPlayerPerformedAction(object sender, string result)
