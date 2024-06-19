@@ -13,7 +13,8 @@ namespace Engine.Models
         public enum ItemCategory
         {
             Miscellaneous,
-            Weapon
+            Weapon,
+            Consumable
         }
 
         public ItemCategory Category { get; } = category;
