@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public class Trader(int id, string name) : LivingEntity(name, 9999, 9999, 9999)
+    public class ItemPercentage(int id, int percentage)
     {
         public int ID { get; } = id;
+        public int Percentage { get; } = percentage;
     }
 }
