@@ -12,19 +12,19 @@ namespace Engine.Actions
         private readonly int _maximumDamage;
         private readonly int _minimumDamage;
 
-        public AttackWithWeapon(GameItem itemInUse, int maximumDamage, int minimumDamage) : base(itemInUse)
+        public AttackWithWeapon(GameItem itemInUse, int minimumDamage, int maximumDamage) : base(itemInUse)
         {
             if (itemInUse.Category != GameItem.ItemCategory.Weapon)
             {
                 throw new ArgumentException($"{itemInUse.Name} is not a weapon.");
             }
 
-            if (_minimumDamage < 0)
+            if (minimumDamage < 0)
             {
                 throw new ArgumentException("minimumDamage must be 0 or larger.");
             }
 
-            if (_maximumDamage < _minimumDamage)
+            if (maximumDamage < minimumDamage)
             {
                 throw new ArgumentException("maximumDamage must be >= minimumDamage.");
             }

@@ -13,6 +13,15 @@ namespace Engine.Models
         public List<ItemQuantity> Ingredients { get; } = new List<ItemQuantity>();
         public List<ItemQuantity> OutputItems { get; } = new List<ItemQuantity>();
 
+        public string ToolTipContents =>
+            "Ingredients" + Environment.NewLine +
+            "===========" + Environment.NewLine +
+            string.Join(Environment.NewLine, Ingredients.Select(i => i.ItemQuantityDescription)) +
+            Environment.NewLine + Environment.NewLine +
+            "Creates" + Environment.NewLine +
+            "===========" + Environment.NewLine +
+            string.Join(Environment.NewLine, OutputItems.Select(i => i.ItemQuantityDescription));
+
         public void AddIngredients(int itemID, int quantity)
         {
             if (!Ingredients.Any(x => x.ItemID == itemID))
