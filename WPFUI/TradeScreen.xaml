@@ -29,7 +29,7 @@
         <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
                Content="Trader's Inventory"/>
 
-        <DataGrid Grid.Row="2" Grid.Column="0" Margin="10" ItemsSource="{Binding CurrentPlayer.GroupedInventory}"
+        <DataGrid Grid.Row="2" Grid.Column="0" Margin="10" ItemsSource="{Binding CurrentPlayer.Inventory.GroupedInventory}"
                   AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False"
                   CanUserDeleteRows="False" VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
@@ -46,7 +46,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid Grid.Row="2" Grid.Column="1" Margin="10" ItemsSource="{Binding CurrentTrader.GroupedInventory}"
+        <DataGrid Grid.Row="2" Grid.Column="1" Margin="10" ItemsSource="{Binding CurrentTrader.Inventory.GroupedInventory}"
           AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False"
           CanUserDeleteRows="False" VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
