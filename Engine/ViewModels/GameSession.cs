@@ -114,7 +114,8 @@ namespace Engine.ViewModels
 
         public GameSession()
         {
-            CurrentPlayer = new Player("Ryan", "Fighter", 0, 10, 10, 1000000);
+            int dexterity = RandomNumberGenerator.NumberBetween(3, 18);
+            CurrentPlayer = new Player("Ryan", "Fighter", 0, 10, 10, dexterity, 1000000);
 
             if (!CurrentPlayer.Inventory.Weapons.Any())
             {

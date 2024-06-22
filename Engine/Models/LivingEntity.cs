@@ -12,6 +12,7 @@ namespace Engine.Models
     public abstract class LivingEntity : BaseNotificationClass
     {
         private string _name;
+        private int _dexterity;
         private int _currentHitPoints;
         private int _maximumHitPoints;
         private int _gold;
@@ -22,7 +23,7 @@ namespace Engine.Models
 
         public string Name 
         { 
-            get { return _name; } 
+            get => _name; 
             private set 
             {
                 _name = value; 
@@ -30,9 +31,19 @@ namespace Engine.Models
             }
         }
 
+        public int Dexterity
+        {
+            get => _dexterity;
+            set
+            {
+                _dexterity = value;
+                OnPropertyChanged();
+            }
+        }
+
         public int CurrentHitPoints
         {
-            get { return _currentHitPoints; }
+            get => _currentHitPoints;
             private set
             {
                 _currentHitPoints = value;
@@ -42,7 +53,7 @@ namespace Engine.Models
 
         public int MaximumHitPoints
         {
-            get { return _maximumHitPoints; }
+            get => _maximumHitPoints;
             protected set
             {
                 _maximumHitPoints = value;
@@ -52,7 +63,7 @@ namespace Engine.Models
 
         public int Gold
         {
-            get { return _gold; }
+            get => _gold;
             private set
             {
                 _gold = value;
@@ -62,7 +73,7 @@ namespace Engine.Models
 
         public int Level
         {
-            get { return _level; }
+            get => _level;
             protected set
             {
                 _level = value;
@@ -72,7 +83,7 @@ namespace Engine.Models
 
         public GameItem CurrentWeapon
         {
-            get { return _currentWeapon; }
+            get => _currentWeapon;
             set
             {
                 if (_currentWeapon != null)
@@ -89,9 +100,10 @@ namespace Engine.Models
                 OnPropertyChanged();
             }
         }
+
         public GameItem CurrentConsumable
         {
-            get { return _currentConsumable; }
+            get => _currentConsumable;
             set
             {
                 if (_currentConsumable != null)
@@ -125,9 +137,10 @@ namespace Engine.Models
         public event EventHandler<string> OnActionPerformed;
         public event EventHandler OnKilled;
 
-        protected LivingEntity(string name, int maxHitPoints, int currHitPoints, int gold, int level = 1)
+        protected LivingEntity(string name, int maxHitPoints, int currHitPoints, int dexterity, int gold, int level = 1)
         {
             Name = name;
+            Dexterity = dexterity;
             CurrentHitPoints = currHitPoints;
             MaximumHitPoints = maxHitPoints;
             Gold = gold;
