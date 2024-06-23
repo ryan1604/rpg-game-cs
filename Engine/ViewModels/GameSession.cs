@@ -75,6 +75,7 @@ namespace Engine.ViewModels
                 {
                     _currentBattle.OnCombatVictory -= OnCurrentMonsterKilled;
                     _currentBattle.Dispose();
+                    _currentBattle = null;
                 }
 
                 _currentMonster = value;
@@ -256,7 +257,18 @@ namespace Engine.ViewModels
         {
             if (CurrentPlayer.CurrentConsumable != null)
             {
+                if (_currentBattle == null)
+                {
+                    CurrentPlayer.OnActionPerformed += OnConsumableActionPerformed;
+                }
+
                 CurrentPlayer.UseCurrentConsumable();
+
+                if (_currentBattle == null)
+                {
+                    CurrentPlayer.OnActionPerformed -= OnConsumableActionPerformed;
+                }
+
             }
         }
 
@@ -302,6 +314,11 @@ namespace Engine.ViewModels
         private void OnCurrentPlayerLeveledUp(object sender, System.EventArgs e)
         {
             _messageBroker.RaiseMessage($"You are now level {CurrentPlayer.Level}!");
+        }
+
+        private void OnConsumableActionPerformed(object sender, string message)
+        {
+            _messageBroker.RaiseMessage(message);
         }
     }
 }
