@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Services;
 
 namespace Engine.Models
 {
@@ -45,7 +46,7 @@ namespace Engine.Models
 
             int totalChances = MonstersHere.Sum(m => m.ChanceOfEncountering);
 
-            int randomNumber = RandomNumberGenerator.NumberBetween(1, totalChances);
+            int randomNumber = DiceService.GetInstance.Roll(totalChances).Value;
 
             int runningTotal = 0;
 

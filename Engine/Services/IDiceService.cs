@@ -1,0 +1,29 @@
+﻿using d20Tek.DiceNotation.DieRoller;
+using d20Tek.DiceNotation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using d20Tek.DiceNotation.Results;
+
+namespace Engine.Services
+{
+    public interface IDiceService
+    {
+        IDice Dice { get; }
+        IDiceConfiguration Configuration { get; }
+        IDieRollTracker RollTracker { get; }
+        void configure(RollerType rollerType, bool enableTracker = false, int constantValue = 1);
+        DiceResult Roll(string diceNotation);
+        DiceResult Roll(int sides, int numDice = 1, int modifier = 0);
+
+        public enum RollerType
+        {
+            Random = 0,
+            Crypto = 1,
+            MathNet = 2,
+            Constant = 3
+        }
+    }
+}

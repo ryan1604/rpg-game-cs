@@ -10,33 +10,26 @@ namespace Engine.Actions
 {
     public class AttackWithWeapon : BaseAction, IAction
     {
-        private readonly int _maximumDamage;
-        private readonly int _minimumDamage;
+        private readonly string _damageDice;
 
-        public AttackWithWeapon(GameItem itemInUse, int minimumDamage, int maximumDamage) : base(itemInUse)
+        public AttackWithWeapon(GameItem itemInUse, string damageDice) : base(itemInUse)
         {
             if (itemInUse.Category != GameItem.ItemCategory.Weapon)
             {
                 throw new ArgumentException($"{itemInUse.Name} is not a weapon.");
             }
 
-            if (minimumDamage < 0)
+            if (string.IsNullOrWhiteSpace(damageDice))
             {
-                throw new ArgumentException("minimumDamage must be 0 or larger.");
+                throw new ArgumentException("damageDice must be valid dice notation.");
             }
 
-            if (maximumDamage < minimumDamage)
-            {
-                throw new ArgumentException("maximumDamage must be >= minimumDamage.");
-            }
-
-            _maximumDamage = maximumDamage;
-            _minimumDamage = minimumDamage;
+            _damageDice = damageDice;
         }
 
         public void Execute(LivingEntity actor, LivingEntity target)
         {
-            int damage = RandomNumberGenerator.NumberBetween(_minimumDamage, _maximumDamage);
+            int damage = DiceService.GetInstance.Roll(_damageDice).Value;
 
             string actorName = (actor is Player) ? "You" : $"The {actor.Name.ToLower()}";
             string targetName = (target is Player) ? "you" : $"the {target.Name.ToLower()}";
