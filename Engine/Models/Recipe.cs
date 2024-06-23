@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,14 @@ namespace Engine.Models
     public class Recipe(int id, string name)
     {
         public int ID { get; } = id;
+        [JsonIgnore]
         public string Name { get; } = name;
+        [JsonIgnore]
         public List<ItemQuantity> Ingredients { get; } = new List<ItemQuantity>();
+        [JsonIgnore]
         public List<ItemQuantity> OutputItems { get; } = new List<ItemQuantity>();
 
+        [JsonIgnore]
         public string ToolTipContents =>
             "Ingredients" + Environment.NewLine +
             "===========" + Environment.NewLine +

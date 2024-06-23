@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Actions;
+using Newtonsoft.Json;
 
 namespace Engine.Models
 {
@@ -17,11 +18,16 @@ namespace Engine.Models
             Consumable
         }
 
+        [JsonIgnore]
         public ItemCategory Category { get; } = category;
         public int ItemTypeID { get; } = itemTypeID;
+        [JsonIgnore]
         public string Name { get; } = name;
+        [JsonIgnore]
         public int Price { get; } = price;
+        [JsonIgnore]
         public bool IsUnique { get; } = isUnique;
+        [JsonIgnore]
         public IAction Action { get; set; } = action;
 
         public GameItem Clone()

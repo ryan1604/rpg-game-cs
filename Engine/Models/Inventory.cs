@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Services;
+using Newtonsoft.Json;
 
 namespace Engine.Models
 {
@@ -13,11 +14,15 @@ namespace Engine.Models
         private readonly List<GroupedInventoryItem> _backingGroupedInventoryItems = new List<GroupedInventoryItem>();
 
         public IReadOnlyList<GameItem> Items => _backingInventory.AsReadOnly();
+        [JsonIgnore]
         public IReadOnlyList<GroupedInventoryItem> GroupedInventory => _backingGroupedInventoryItems.AsReadOnly();
+        [JsonIgnore]
         public IReadOnlyList<GameItem> Weapons => 
             _backingInventory.ItemsThatAre(GameItem.ItemCategory.Weapon).AsReadOnly();
+        [JsonIgnore]
         public IReadOnlyList<GameItem> Consumables =>
             _backingInventory.ItemsThatAre(GameItem.ItemCategory.Consumable).AsReadOnly();
+        [JsonIgnore]
         public bool HasConsumable => Consumables.Any();
 
         public Inventory(IEnumerable<GameItem> items = null)

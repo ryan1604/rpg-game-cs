@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,20 @@ namespace Engine.Models
         int rewardExperiencePoints, int rewardGold, List<ItemQuantity> rewardItems)
     {
         public int ID { get; } = id;
+        [JsonIgnore]
         public string Name { get; } = name;
+        [JsonIgnore]
         public string Description { get; } = description;
+        [JsonIgnore]
         public List<ItemQuantity> ItemsToComplete { get; } = itemsToComplete;
+        [JsonIgnore]
         public int RewardExperiencePoints { get; } = rewardExperiencePoints;
+        [JsonIgnore]
         public int RewardGold { get; } = rewardGold;
+        [JsonIgnore]
         public List<ItemQuantity> RewardItems { get; } = rewardItems;
 
+        [JsonIgnore]
         public string ToolTipContents =>
             Description + Environment.NewLine + Environment.NewLine +
             "Items to complete the quest" + Environment.NewLine +

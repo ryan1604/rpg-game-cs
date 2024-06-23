@@ -1,5 +1,6 @@
 ﻿using Engine.Factories;
 using Engine.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -131,7 +132,9 @@ namespace Engine.Models
             }
         }
 
+        [JsonIgnore]
         public bool IsAlive => CurrentHitPoints > 0;
+        [JsonIgnore]
         public bool IsDead => !IsAlive;
 
         public event EventHandler<string> OnActionPerformed;
