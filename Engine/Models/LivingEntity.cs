@@ -4,13 +4,14 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public abstract class LivingEntity : BaseNotificationClass
+    public abstract class LivingEntity : INotifyPropertyChanged
     {
         private string _name;
         private int _currentHitPoints;
@@ -21,6 +22,8 @@ namespace Engine.Models
         private GameItem _currentConsumable;
         private Inventory _inventory;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ObservableCollection<PlayerAttribute> Attributes { get; } = 
             new ObservableCollection<PlayerAttribute>();
 
@@ -30,7 +33,6 @@ namespace Engine.Models
             private set 
             {
                 _name = value; 
-                OnPropertyChanged();
             }
         }
 
@@ -40,7 +42,6 @@ namespace Engine.Models
             private set
             {
                 _currentHitPoints = value;
-                OnPropertyChanged();
             }
         }
 
@@ -50,7 +51,6 @@ namespace Engine.Models
             protected set
             {
                 _maximumHitPoints = value;
-                OnPropertyChanged();
             }
         }
 
@@ -60,7 +60,6 @@ namespace Engine.Models
             private set
             {
                 _gold = value;
-                OnPropertyChanged();
             }
         }
 
@@ -70,7 +69,6 @@ namespace Engine.Models
             protected set
             {
                 _level = value;
-                OnPropertyChanged();
             }
         }
 
@@ -90,7 +88,6 @@ namespace Engine.Models
                 {
                     _currentWeapon.Action.OnActionPerformed += RaiseActionPerformedEvent;
                 }
-                OnPropertyChanged();
             }
         }
 
@@ -110,7 +107,6 @@ namespace Engine.Models
                 {
                     _currentConsumable.Action.OnActionPerformed += RaiseActionPerformedEvent;
                 }
-                OnPropertyChanged();
             }
         }
 
@@ -120,7 +116,6 @@ namespace Engine.Models
             private set
             {
                 _inventory = value;
-                OnPropertyChanged();
             }
         }
 

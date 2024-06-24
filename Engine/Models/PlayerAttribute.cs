@@ -1,13 +1,14 @@
 ﻿using Engine.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public class PlayerAttribute : BaseNotificationClass
+    public class PlayerAttribute : INotifyPropertyChanged
     {
         private int _modifiedValue;
 
@@ -21,10 +22,11 @@ namespace Engine.Models
             set
             {
                 _modifiedValue = value;
-                OnPropertyChanged();
             }
         }
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public PlayerAttribute(string key, string displayName, string diceNotation) :
             this(key, displayName, diceNotation, DiceService.GetInstance.Roll(diceNotation).Value)
         { 
