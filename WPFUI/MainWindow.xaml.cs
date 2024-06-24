@@ -35,6 +35,11 @@ namespace WPFUI
             SetActiveGameSessionTo(new GameSession());
         }
 
+        public MainWindow(Player player) : this()
+        {
+            _gameSession.CurrentPlayer = player;
+        }
+
         private void InitialiseUserInputActions()
         {
             _userInputActions.Add(Key.W, () => _gameSession.MoveNorth());
