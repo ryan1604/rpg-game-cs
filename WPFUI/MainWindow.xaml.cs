@@ -27,17 +27,12 @@ namespace WPFUI
 
         private GameSession _gameSession;
 
-        public MainWindow()
+        public MainWindow(Player player, int x = 0, int y = 0)
         {
             InitializeComponent();
             InitialiseUserInputActions();
             
-            SetActiveGameSessionTo(new GameSession());
-        }
-
-        public MainWindow(Player player) : this()
-        {
-            _gameSession.CurrentPlayer = player;
+            SetActiveGameSessionTo(new GameSession(player, x, y));
         }
 
         private void InitialiseUserInputActions()
@@ -91,21 +86,9 @@ namespace WPFUI
 
         private void StartNewGame_OnClick(object sender, RoutedEventArgs e)
         {
-            SetActiveGameSessionTo(new GameSession());
-        }
-
-        private void LoadGame_OnClick(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
-                Filter = $"Saved games (*.{SAVE_GAME_FILE_EXTENSION})|*.{SAVE_GAME_FILE_EXTENSION}"
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                SetActiveGameSessionTo(SaveGameService.LoadLastSaveOrCreateNew(openFileDialog.FileName));
-            }
+            Startup startup = new Startup();
+            startup.Show();
+            Close();
         }
 
         private void SaveGame_OnClick(object sender, RoutedEventArgs e)
@@ -119,6 +102,11 @@ namespace WPFUI
         }
 
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            AskToSaveGame();
+        }
+
+        private void AskToSaveGame()
         {
             YesNoWindow message = new YesNoWindow("Save Game", "Do you want to save your game?");
             message.Owner = GetWindow(this);

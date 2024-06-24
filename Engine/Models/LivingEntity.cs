@@ -13,7 +13,6 @@ namespace Engine.Models
     public abstract class LivingEntity : BaseNotificationClass
     {
         private string _name;
-        private int _dexterity;
         private int _currentHitPoints;
         private int _maximumHitPoints;
         private int _gold;
@@ -22,22 +21,15 @@ namespace Engine.Models
         private GameItem _currentConsumable;
         private Inventory _inventory;
 
+        public ObservableCollection<PlayerAttribute> Attributes { get; } = 
+            new ObservableCollection<PlayerAttribute>();
+
         public string Name 
         { 
             get => _name; 
             private set 
             {
                 _name = value; 
-                OnPropertyChanged();
-            }
-        }
-
-        public int Dexterity
-        {
-            get => _dexterity;
-            set
-            {
-                _dexterity = value;
                 OnPropertyChanged();
             }
         }
@@ -140,14 +132,19 @@ namespace Engine.Models
         public event EventHandler<string> OnActionPerformed;
         public event EventHandler OnKilled;
 
-        protected LivingEntity(string name, int maxHitPoints, int currHitPoints, int dexterity, int gold, int level = 1)
+        protected LivingEntity(string name, int maxHitPoints, int currHitPoints, 
+                               IEnumerable<PlayerAttribute> attributes, int gold, int level = 1)
         {
             Name = name;
-            Dexterity = dexterity;
             CurrentHitPoints = currHitPoints;
             MaximumHitPoints = maxHitPoints;
             Gold = gold;
             Level = level;
+
+            foreach (PlayerAttribute attribute in attributes)
+            {
+                Attributes.Add(attribute);
+            }
 
             Inventory = new Inventory();
         }

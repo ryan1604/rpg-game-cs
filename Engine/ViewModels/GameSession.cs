@@ -9,7 +9,6 @@ using System.ComponentModel;
 using Engine.EventArgs;
 using Engine.Services;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Engine.ViewModels
 {
@@ -136,29 +135,6 @@ namespace Engine.ViewModels
 
         [JsonIgnore]
         public bool HasTrader => CurrentTrader != null;
-
-        public GameSession()
-        {
-            PopulateGameDetails();
-            
-            CurrentWorld = WorldFactory.CreateWorld();
-            
-            int dexterity = DiceService.GetInstance.Roll(6, 3).Value;
-            CurrentPlayer = new Player("Ryan", "Fighter", 0, 10, 10, dexterity, 1000000);
-
-            if (!CurrentPlayer.Inventory.Weapons.Any())
-            {
-                CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));
-            }
-
-            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(2001));
-            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3001));
-            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3002));
-            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3003));
-            CurrentPlayer.LearnRecipe(RecipeFactory.RecipeByID(1));
-
-            CurrentLocation = CurrentWorld.LocationAt(0, 0);
-        }
 
         public GameSession(Player player, int x, int y)
         {
