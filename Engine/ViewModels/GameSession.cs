@@ -9,19 +9,31 @@ using System.ComponentModel;
 using Engine.EventArgs;
 using Engine.Services;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
+
+        private GameDetails _gameDetails;
         private Battle _currentBattle;
         private Location _currentLocation;
         private Monster _currentMonster;
         private Trader _currentTrader;
         private Player _currentPlayer;
 
-        public string Version { get; } = "0.1.000";
+        [JsonIgnore]
+        public GameDetails GameDetails
+        {
+            get => _gameDetails;
+            set
+            {
+                _gameDetails = value;
+                OnPropertyChanged();
+            }
+        }
 
         [JsonIgnore]
         public World CurrentWorld { get; }
@@ -127,6 +139,10 @@ namespace Engine.ViewModels
 
         public GameSession()
         {
+            PopulateGameDetails();
+            
+            CurrentWorld = WorldFactory.CreateWorld();
+            
             int dexterity = DiceService.GetInstance.Roll(6, 3).Value;
             CurrentPlayer = new Player("Ryan", "Fighter", 0, 10, 10, dexterity, 1000000);
 
@@ -141,13 +157,13 @@ namespace Engine.ViewModels
             CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3003));
             CurrentPlayer.LearnRecipe(RecipeFactory.RecipeByID(1));
 
-            CurrentWorld = WorldFactory.CreateWorld();
-
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
 
         public GameSession(Player player, int x, int y)
         {
+            PopulateGameDetails();
+
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentPlayer = player;
             CurrentLocation = CurrentWorld.LocationAt(x, y);
@@ -183,6 +199,11 @@ namespace Engine.ViewModels
             {
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1);
             }
+        }
+
+        private void PopulateGameDetails()
+        {
+            GameDetails = GameDetailsService.ReadGameDetails();
         }
 
         private void CompleteQuestsAtLocation()
