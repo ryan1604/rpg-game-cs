@@ -7,37 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="GameData\GameDetails.json" />
-    <None Remove="GameData\GameItems.xml" />
-    <None Remove="GameData\Locations.xml" />
-    <None Remove="GameData\Monsters.xml" />
-    <None Remove="GameData\Quests.xml" />
-    <None Remove="GameData\Recipes.xml" />
-    <None Remove="GameData\Traders.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="GameData\GameDetails.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData\GameItems.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData\Locations.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData\Monsters.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData\Quests.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData\Recipes.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData\Traders.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Compile Remove="GameData\**" />
+    <EmbeddedResource Remove="GameData\**" />
+    <None Remove="GameData\**" />
   </ItemGroup>
 
   <ItemGroup>
