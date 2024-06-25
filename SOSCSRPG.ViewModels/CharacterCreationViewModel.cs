@@ -1,13 +1,8 @@
 ﻿using SOSCSRPG.Services.Factories;
 using SOSCSRPG.Models;
 using SOSCSRPG.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SOSCSRPG.ViewModels
 {

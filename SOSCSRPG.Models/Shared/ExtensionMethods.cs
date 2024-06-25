@@ -1,5 +1,4 @@
-﻿using SOSCSRPG.Models;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Xml;
 
 namespace SOSCSRPG.Models.Shared

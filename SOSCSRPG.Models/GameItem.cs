@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SOSCSRPG.Models.Actions;
+﻿using SOSCSRPG.Models.Actions;
 using Newtonsoft.Json;
 
 namespace SOSCSRPG.Models

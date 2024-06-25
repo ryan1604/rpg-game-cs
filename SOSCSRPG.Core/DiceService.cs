@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using d20Tek.DiceNotation;
+﻿using d20Tek.DiceNotation;
 using d20Tek.DiceNotation.DieRoller;
 using d20Tek.DiceNotation.Results;
 

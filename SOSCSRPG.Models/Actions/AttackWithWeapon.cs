@@ -1,5 +1,4 @@
-﻿using SOSCSRPG.Models;
-using SOSCSRPG.Core;
+﻿using SOSCSRPG.Core;
 using SOSCSRPG.Models.Shared;
 
 namespace SOSCSRPG.Models.Actions
