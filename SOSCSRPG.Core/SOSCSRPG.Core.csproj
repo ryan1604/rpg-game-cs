@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SOSCSRPG.Core\SOSCSRPG.Core.csproj" />
+    <PackageReference Include="d20tek-dicenotation" Version="4.0.1" />
+    <PackageReference Include="D20Tek.Common" Version="3.8.4" />
   </ItemGroup>
 
 </Project>

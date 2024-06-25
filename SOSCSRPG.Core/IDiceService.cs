@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using d20Tek.DiceNotation.Results;
 
-namespace Engine.Services
+namespace SOSCSRPG.Core
 {
     public interface IDiceService
     {

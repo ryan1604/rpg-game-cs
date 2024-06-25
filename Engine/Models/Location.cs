@@ -1,11 +1,4 @@
-﻿using Engine.Factories;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Engine.Services;
+﻿using Newtonsoft.Json;
 
 namespace Engine.Models
 {
@@ -35,30 +28,6 @@ namespace Engine.Models
             {
                 MonstersHere.Add(new MonsterEncounter(monsterID, chanceOfEncountering));
             }
-        }
-
-        public Monster GetMonster()
-        {
-            if (!MonstersHere.Any())
-            {
-                return null;
-            }
-
-            int totalChances = MonstersHere.Sum(m => m.ChanceOfEncountering);
-
-            int randomNumber = DiceService.GetInstance.Roll(totalChances).Value;
-
-            int runningTotal = 0;
-
-            foreach(MonsterEncounter monsterEncounter in MonstersHere)
-            {
-                runningTotal += monsterEncounter.ChanceOfEncountering;
-                if (randomNumber <= runningTotal)
-                {
-                    return MonsterFactory.GetMonster(monsterEncounter.MonsterID);
-                }
-            }
-            return MonsterFactory.GetMonster(MonstersHere.Last().MonsterID);
         }
     }
 }
