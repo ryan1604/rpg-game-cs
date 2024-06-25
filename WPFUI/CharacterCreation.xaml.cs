@@ -1,5 +1,5 @@
-﻿using Engine.Models;
-using Engine.Services;
+﻿using SOSCSRPG.Models;
+using SOSCSRPG.Services;
 using SOSCSRPG.ViewModels;
 using System;
 using System.Collections.Generic;

@@ -1,12 +1,12 @@
-﻿using Engine.Services;
-using Engine.ViewModels;
+﻿using SOSCSRPG.Services;
+using SOSCSRPG.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestEngine.Services
+namespace TestSOSCSRPG.Services
 {
     [TestClass]
     public class TestSaveGameService

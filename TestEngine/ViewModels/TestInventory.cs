@@ -1,13 +1,13 @@
-﻿using Engine.Factories;
-using Engine.Models;
-using Engine.Services;
+﻿using SOSCSRPG.Services.Factories;
+using SOSCSRPG.Models;
+using SOSCSRPG.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestEngine.ViewModels
+namespace TestSOSCSRPG.ViewModels
 {
     [TestClass]
     public class TestInventory

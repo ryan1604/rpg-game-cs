@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.csproj" />
+    <ProjectReference Include="..\Engine\SOSCSRPG.csproj" />
   </ItemGroup>
 
   <ItemGroup>

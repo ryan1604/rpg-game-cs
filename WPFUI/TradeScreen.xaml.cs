@@ -1,4 +1,4 @@
-﻿using Engine.ViewModels;
+﻿using SOSCSRPG.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Engine.Models;
+using SOSCSRPG.Models;
 
 namespace WPFUI
 {

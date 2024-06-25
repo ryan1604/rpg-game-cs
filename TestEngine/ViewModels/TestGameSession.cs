@@ -1,6 +1,6 @@
-﻿using Engine.ViewModels;
+﻿using SOSCSRPG.ViewModels;
 
-namespace TestEngine.ViewModels
+namespace TestSOSCSRPG.ViewModels
 {
     [TestClass]
     public class TestGameSession

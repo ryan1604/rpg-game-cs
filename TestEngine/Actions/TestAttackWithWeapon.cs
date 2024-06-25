@@ -1,13 +1,13 @@
-﻿using Engine.Actions;
-using Engine.Factories;
-using Engine.Models;
+﻿using SOSCSRPG.Models.Actions;
+using SOSCSRPG.Services.Factories;
+using SOSCSRPG.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestEngine.Actions
+namespace TestSOSCSRPG.Models.Actions
 {
     [TestClass]
     public class TestAttackWithWeapon

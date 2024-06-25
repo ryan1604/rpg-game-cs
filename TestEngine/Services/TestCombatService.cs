@@ -1,12 +1,12 @@
-﻿using Engine.Models;
-using Engine.Services;
+﻿using SOSCSRPG.Models;
+using SOSCSRPG.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestEngine.Services
+namespace TestSOSCSRPG.Services
 {
     [TestClass]
     public class TestCombatService
