@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOSCSRPG.Services
+namespace SOSCSRPG.Core
 {
     public static class LoggingService
     {

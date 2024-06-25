@@ -1,4 +1,4 @@
-﻿using SOSCSRPG.Services;
+﻿using SOSCSRPG.Core;
 using System.Configuration;
 using System.Data;
 using System.Windows;

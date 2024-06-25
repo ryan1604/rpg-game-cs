@@ -1,10 +1,6 @@
 ﻿using SOSCSRPG.Models.EventArgs;
 using Engine.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SOSCSRPG.Core;
 
 namespace Engine.Models
 {
