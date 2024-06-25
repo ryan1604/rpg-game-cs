@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.EventArgs
+namespace SOSCSRPG.Models.EventArgs
 {
     public class CombatVictoryEventArgs : System.EventArgs
     {

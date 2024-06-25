@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Engine.EventArgs;
+using SOSCSRPG.Models.EventArgs;
 using Engine.Models;
 using Engine.Services;
 using Engine.ViewModels;
