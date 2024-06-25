@@ -204,7 +204,7 @@ namespace Engine.ViewModels
                     _messageBroker.RaiseMessage("Return with:");
                     foreach(ItemQuantity itemQuantity in quest.ItemsToComplete)
                     {
-                        _messageBroker.RaiseMessage($"   {itemQuantity.Quantity} {ItemFactory.CreateGameItem(itemQuantity.ItemID).Name}");
+                        _messageBroker.RaiseMessage($"   {itemQuantity.ItemQuantityDescription}");
                     }
 
                     _messageBroker.RaiseMessage("And you will receive:");
@@ -212,7 +212,7 @@ namespace Engine.ViewModels
                     _messageBroker.RaiseMessage($"   {quest.RewardGold} gold");
                     foreach (ItemQuantity itemQuantity in quest.RewardItems)
                     {
-                        _messageBroker.RaiseMessage($"   {itemQuantity.Quantity} {ItemFactory.CreateGameItem(itemQuantity.ItemID).Name}");
+                        _messageBroker.RaiseMessage($"   {itemQuantity.ItemQuantityDescription}");
                     }
                 }
             }
@@ -262,7 +262,7 @@ namespace Engine.ViewModels
                 _messageBroker.RaiseMessage("You do not have the required ingredients:");
                 foreach(ItemQuantity itemQuantity in recipe.Ingredients)
                 {
-                    _messageBroker.RaiseMessage($"   {itemQuantity.Quantity} {ItemFactory.ItemName(itemQuantity.ItemID)}");
+                    _messageBroker.RaiseMessage($"   {itemQuantity.ItemQuantityDescription}");
                 }
             }
         }

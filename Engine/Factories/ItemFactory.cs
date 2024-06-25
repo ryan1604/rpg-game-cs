@@ -74,10 +74,5 @@ namespace Engine.Factories
                     return GameItem.ItemCategory.Miscellaneous;
             }
         }
-
-        public static string ItemName(int id)
-        {
-            return _standardGameItems.FirstOrDefault(i => i.ItemTypeID == id)?.Name ?? "";
-        }
     }
 }
