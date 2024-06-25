@@ -7,26 +7,11 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public class QuestStatus : INotifyPropertyChanged
+    public class QuestStatus(Quest quest) : INotifyPropertyChanged
     {
-        private bool _isCompleted;
-
-        public Quest PlayerQuest { get; }
-        public bool IsCompleted
-        {
-            get { return _isCompleted; }
-            set
-            {
-                _isCompleted = value;
-            }
-        }
+        public Quest PlayerQuest { get; } = quest;
+        public bool IsCompleted { get; set; } = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public QuestStatus(Quest quest)
-        {
-            PlayerQuest = quest;
-            IsCompleted = false;
-        }
     }
 }

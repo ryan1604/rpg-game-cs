@@ -13,64 +13,20 @@ namespace Engine.Models
 {
     public abstract class LivingEntity : INotifyPropertyChanged
     {
-        private string _name;
-        private int _currentHitPoints;
-        private int _maximumHitPoints;
-        private int _gold;
-        private int _level;
         private GameItem _currentWeapon;
         private GameItem _currentConsumable;
-        private Inventory _inventory;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<PlayerAttribute> Attributes { get; } = 
             new ObservableCollection<PlayerAttribute>();
 
-        public string Name 
-        { 
-            get => _name; 
-            private set 
-            {
-                _name = value; 
-            }
-        }
-
-        public int CurrentHitPoints
-        {
-            get => _currentHitPoints;
-            private set
-            {
-                _currentHitPoints = value;
-            }
-        }
-
-        public int MaximumHitPoints
-        {
-            get => _maximumHitPoints;
-            protected set
-            {
-                _maximumHitPoints = value;
-            }
-        }
-
-        public int Gold
-        {
-            get => _gold;
-            private set
-            {
-                _gold = value;
-            }
-        }
-
-        public int Level
-        {
-            get => _level;
-            protected set
-            {
-                _level = value;
-            }
-        }
+        public string Name { get; }
+        public int CurrentHitPoints { get; private set; }
+        public int MaximumHitPoints { get; protected set; }
+        public int Gold { get; private set; }
+        public int Level { get; protected set; }
+        public Inventory Inventory { get; private set; }
 
         public GameItem CurrentWeapon
         {
@@ -107,15 +63,6 @@ namespace Engine.Models
                 {
                     _currentConsumable.Action.OnActionPerformed += RaiseActionPerformedEvent;
                 }
-            }
-        }
-
-        public Inventory Inventory
-        {
-            get => _inventory;
-            private set
-            {
-                _inventory = value;
             }
         }
 

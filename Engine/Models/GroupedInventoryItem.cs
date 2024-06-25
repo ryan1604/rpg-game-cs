@@ -7,35 +7,12 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public class GroupedInventoryItem : INotifyPropertyChanged
+    public class GroupedInventoryItem(GameItem item, int quantity) : INotifyPropertyChanged
     {
-        private GameItem _item;
-        private int _quantity;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public GameItem Item 
-        { 
-            get { return _item; } 
-            set 
-            {
-                _item = value;
-            }
-        }
+        public GameItem Item { get; set; } = item;
 
-        public int Quantity
-        {
-            get { return _quantity; }
-            set
-            {
-                _quantity = value;
-            }
-        }
-
-        public GroupedInventoryItem(GameItem item, int quantity)
-        {
-            Item = item;
-            Quantity = quantity;
-        }
+        public int Quantity { get; set; } = quantity;
     }
 }

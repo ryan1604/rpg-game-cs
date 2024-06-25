@@ -15,25 +15,15 @@ namespace Engine.ViewModels
     public class GameSession : INotifyPropertyChanged
     {
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
-
-        private GameDetails _gameDetails;
         private Battle _currentBattle;
         private Location _currentLocation;
         private Monster _currentMonster;
-        private Trader _currentTrader;
         private Player _currentPlayer;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         [JsonIgnore]
-        public GameDetails GameDetails
-        {
-            get => _gameDetails;
-            set
-            {
-                _gameDetails = value;
-            }
-        }
+        public GameDetails GameDetails { get; private set; }
 
         [JsonIgnore]
         public World CurrentWorld { get; }
@@ -96,14 +86,7 @@ namespace Engine.ViewModels
         }
 
         [JsonIgnore]
-        public Trader CurrentTrader
-        {
-            get { return _currentTrader; }
-            set 
-            { 
-                _currentTrader = value;
-            }
-        }
+        public Trader CurrentTrader { get; private set; }
 
         [JsonIgnore]
         public bool HasLocationToNorth =>

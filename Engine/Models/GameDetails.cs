@@ -8,9 +8,9 @@ namespace Engine.Models
 {
     public class GameDetails(string title, string subTitle, string version)
     {
-        public string Title { get; set; } = title;
-        public string SubTitle { get; set; } = subTitle;
-        public string Version { get; set; } = version;
+        public string Title { get; } = title;
+        public string SubTitle { get; } = subTitle;
+        public string Version { get; } = version;
 
         public List<PlayerAttribute> PlayerAttributes { get; } = new List<PlayerAttribute>();
         public List<Race> Races { get; } = new List<Race>();
